@@ -1,0 +1,37 @@
+version: "3"
+services:
+    hadoop-master:
+        image: woody303/projet-hadoop-spark:projet-hadoop-spark
+        stdin_open: true
+        tty: true
+        ports:
+          - "50070:50070"
+          - "8088:8088"
+          - "7077:7077"
+          - "16010:16010"
+        networks:
+            - hadoop
+    hadoop-slave1:
+        image: woody303/projet-hadoop-spark:projet-hadoop-spark
+        stdin_open: true
+        tty: true
+        depends_on:
+            - hadoop-master
+        ports:
+            - "8040:8042"
+        networks:
+            - hadoop
+
+    hadoop-slave2:
+        image: woody303/projet-hadoop-spark:projet-hadoop-spark
+        stdin_open: true
+        tty: true
+        depends_on:
+            - hadoop-master
+        ports:
+            - "8041:8042"
+        networks:
+            - hadoop
+networks:
+    hadoop:
+        driver: bridge
