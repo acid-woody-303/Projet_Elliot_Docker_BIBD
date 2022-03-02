@@ -17,6 +17,7 @@ It is composed of :
 - To make sure you cluster is up and running you can connect toi each node and type : "jps" in the command prompt.
 - Our data is already in the container but we have to upload it to the HDFS (Hadoop Distributed File System) with : "".
 - then we can start spark to an analyze the data by typing in : "spark-shell"
+- type this in scala to import the dataset : "val df = spark.read.format("csv").option("header","true").load("/home/sales_data_sample.csv")"
 - Then you can start to explore the data !
 
 ### Important mention :
